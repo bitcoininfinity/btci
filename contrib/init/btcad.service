@@ -1,0 +1,26 @@
+[Unit]
+Description=btca's distributed currency daemon
+After=network.target
+
+[Service]
+User=btca
+Group=btca
+
+Type=btca
+PIDFile=/var/lib/btcad/btcad.pid
+
+ExecStart=/usr/bin/btcad -daemon -pid=/var/lib/btcad/btcad.pid \
+          -conf=/etc/btca/btca.conf -datadir=/var/lib/btcad
+
+ExecStop=-/usr/bin/btca-cli -conf=/etc/btca/btca.conf \
+         -datadir=/var/lib/btcad stop
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

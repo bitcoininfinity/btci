@@ -1,0 +1,26 @@
+# /etc/conf.d/btcad: config file for /etc/init.d/btcad
+
+# Config file location
+#BITCOIND_CONFIGFILE="/etc/btca/btca.conf"
+
+# What directory to write pidfile to?  (created and owned by $BITCOIND_USER)
+#BITCOIND_PIDDIR="/var/run/btcad"
+
+# What filename to give the pidfile
+#BITCOIND_PIDFILE="${BITCOIND_PIDDIR}/btcad.pid"
+
+# Where to write btcad data (be mindful that the blockchain is large)
+#BITCOIND_DATADIR="/var/lib/btcad"
+
+# User and group to own btcad process
+#BITCOIND_USER="btca"
+#BITCOIND_GROUP="btca"
+
+# Path to btcad executable
+#BITCOIND_BIN="/usr/bin/btcad"
+
+# Nice value to run btcad under
+#BITCOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+BITCOIND_OPTS=""

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=btca
+Comment=btca P2P Cryptocurrency
+Comment[fr]=btca, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=btca, eşten eşe kriptografik sanal para birimi
+Exec=btca-qt %u
+Terminal=false
+Type=Application
+Icon=btca128
+MimeType=x-scheme-handler/btca;
+Categories=Office;Finance;
