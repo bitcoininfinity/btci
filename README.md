@@ -7,7 +7,7 @@ Bitcoin Addition Core integration/staging repository
 ### Coin Specs
 
 • PoW Algorithm: Quark  
-• Premine: 500,000,000 BTCA  
+• Premine: 5,000,000 BTCA  
 • PoW Blocks: 1 - 250  
 • PoS Blocks: Starting from 251  
 • Block Time: 60 Seconds  
