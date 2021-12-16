@@ -161,14 +161,16 @@ public:
         assert(hashGenesisBlock == uint256("0x00000751d64b9a5d7305002ad6dc6ab0a5f0b01a15f7834d99a8092ce5692b80"));
         assert(genesis.hashMerkleRoot == uint256("0xce2b583da4bc5ca56e76c6102f11fa8221611e6238559fce6b6bf969fe572816")); // 0x {merkle hash}
 
-        vSeeds.push_back(CDNSSeedData("185.247.116.231", "185.247.116.231"));
-        vSeeds.push_back(CDNSSeedData("185.144.157.233", "185.144.157.233"));
-        vSeeds.push_back(CDNSSeedData("185.227.109.21", "185.227.109.21"));
-        vSeeds.push_back(CDNSSeedData("185.227.109.36", "185.227.109.36"));
-        vSeeds.push_back(CDNSSeedData("185.227.109.41", "185.227.109.41"));
-        vSeeds.push_back(CDNSSeedData("185.247.116.179", "185.247.116.179"));
-        vSeeds.push_back(CDNSSeedData("185.181.11.50", "185.181.11.50"));
-        vSeeds.push_back(CDNSSeedData("185.144.156.159", "185.144.156.159"));
+		vSeeds.push_back(CDNSSeedData("b293210.online", "b293210.online"));
+		vSeeds.push_back(CDNSSeedData("b412859.online", "b412859.online"));
+		vSeeds.push_back(CDNSSeedData("b149038.online", "b149038.online"));
+		vSeeds.push_back(CDNSSeedData("b617797.online", "b617797.online"));
+		vSeeds.push_back(CDNSSeedData("b297816.online", "b297816.online"));
+		vSeeds.push_back(CDNSSeedData("b724795.online", "b724795.online"));
+		vSeeds.push_back(CDNSSeedData("b293214.online", "b293214.online"));
+		vSeeds.push_back(CDNSSeedData("b412853.online", "b412853.online"));
+		vSeeds.push_back(CDNSSeedData("b874102.online", "b874102.online"));
+		vSeeds.push_back(CDNSSeedData("b675431.online", "b675431.online"));
 
         // btca addresses start with 'С'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 25); // btca addresses start with 'K' https://en.bitcoin.it/wiki/List_of_address_prefixes
