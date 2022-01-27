@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef btca_STAKEINPUT_H
-#define btca_STAKEINPUT_H
+#ifndef btci_STAKEINPUT_H
+#define btci_STAKEINPUT_H
 
 class CKeyStore;
 class CWallet;
@@ -22,15 +22,15 @@ public:
     virtual CAmount GetValue() = 0;
     virtual bool CreateTxOuts(CWallet* pwallet, vector<CTxOut>& vout, CAmount nTotal) = 0;
     virtual bool GetModifier(uint64_t& nStakeModifier) = 0;
-    virtual bool IsZbtca() = 0;
+    virtual bool IsZbtci() = 0;
     virtual CDataStream GetUniqueness() = 0;
 };
 
 
-// zbtcaStake can take two forms
+// zbtciStake can take two forms
 // 1) the stake candidate, which is a zcmint that is attempted to be staked
-// 2) a staked zbtca, which is a zcspend that has successfully staked
-class CZbtcaStake : public CStakeInput
+// 2) a staked zbtci, which is a zcspend that has successfully staked
+class CZbtciStake : public CStakeInput
 {
 private:
     uint32_t nChecksum;
@@ -39,7 +39,7 @@ private:
     uint256 hashSerial;
 
 public:
-    explicit CZbtcaStake(libzerocoin::CoinDenomination denom, const uint256& hashSerial)
+    explicit CZbtciStake(libzerocoin::CoinDenomination denom, const uint256& hashSerial)
     {
         this->denom = denom;
         this->hashSerial = hashSerial;
@@ -47,7 +47,7 @@ public:
         fMint = true;
     }
 
-    explicit CZbtcaStake(const libzerocoin::CoinSpend& spend);
+    explicit CZbtciStake(const libzerocoin::CoinSpend& spend);
 
     CBlockIndex* GetIndexFrom() override;
     bool GetTxFrom(CTransaction& tx) override;
@@ -57,19 +57,19 @@ public:
     bool CreateTxIn(CWallet* pwallet, CTxIn& txIn, uint256 hashTxOut = 0) override;
     bool CreateTxOuts(CWallet* pwallet, vector<CTxOut>& vout, CAmount nTotal) override;
     bool MarkSpent(CWallet* pwallet, const uint256& txid);
-    bool IsZbtca() override { return true; }
+    bool IsZbtci() override { return true; }
     int GetChecksumHeightFromMint();
     int GetChecksumHeightFromSpend();
     uint32_t GetChecksum();
 };
 
-class CbtcaStake : public CStakeInput
+class CbtciStake : public CStakeInput
 {
 private:
     CTransaction txFrom;
     unsigned int nPosition;
 public:
-    CbtcaStake()
+    CbtciStake()
     {
         this->pindexFrom = nullptr;
     }
@@ -83,8 +83,8 @@ public:
     CDataStream GetUniqueness() override;
     bool CreateTxIn(CWallet* pwallet, CTxIn& txIn, uint256 hashTxOut = 0) override;
     bool CreateTxOuts(CWallet* pwallet, vector<CTxOut>& vout, CAmount nTotal) override;
-    bool IsZbtca() override { return false; }
+    bool IsZbtci() override { return false; }
 };
 
 
-#endif //btca_STAKEINPUT_H
+#endif //btci_STAKEINPUT_H

@@ -2,7 +2,7 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "zbtcachain.h"
+#include "zbtcichain.h"
 #include "invalid.h"
 #include "main.h"
 #include "txdb.h"

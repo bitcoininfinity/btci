@@ -155,7 +155,7 @@ class FrameworkInfo(object):
 class ApplicationBundleInfo(object):
     def __init__(self, path):
         self.path = path
-        appName = "btca-Qt"
+        appName = "btci-Qt"
         self.binaryPath = os.path.join(path, "Contents", "MacOS", appName)
         if not os.path.exists(self.binaryPath):
             raise RuntimeError("Could not find bundle binary for " + path)
@@ -320,7 +320,7 @@ def deployFrameworks(frameworks, bundlePath, binaryPath, strip, verbose, deploym
     if deploymentInfo is None:
         deploymentInfo = DeploymentInfo()
 
-    os.system("cp /usr/local/lib/libboost_system-mt.dylib dist/btca-Qt.app/Contents/Frameworks/")
+    os.system("cp /usr/local/lib/libboost_system-mt.dylib dist/btci-Qt.app/Contents/Frameworks/")
 
     while len(frameworks) > 0:
         framework = frameworks.pop(0)
@@ -605,7 +605,7 @@ else:
 
 # ------------------------------------------------
 
-target = os.path.join("dist", "btca-Qt.app")
+target = os.path.join("dist", "btci-Qt.app")
 
 if verbose >= 2:
     print("+ Copying source bundle +")

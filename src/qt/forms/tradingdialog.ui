@@ -181,7 +181,7 @@
       <string>Asks</string>
      </property>
     </widget>
-    <widget class="QLabel" name="btcaSupply">
+    <widget class="QLabel" name="btciSupply">
      <property name="geometry">
       <rect>
        <x>540</x>
@@ -197,7 +197,7 @@
       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="btcaDemand">
+    <widget class="QLabel" name="btciDemand">
      <property name="geometry">
       <rect>
        <x>160</x>
@@ -432,7 +432,7 @@
     <attribute name="title">
      <string>Buy</string>
     </attribute>
-    <widget class="QPushButton" name="Buybtca">
+    <widget class="QPushButton" name="Buybtci">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -442,10 +442,10 @@
       </rect>
      </property>
      <property name="text">
-      <string>Buy btca</string>
+      <string>Buy btci</string>
      </property>
      <property name="icon">
-      <iconset resource="../btca.qrc">
+      <iconset resource="../btci.qrc">
        <normaloff>:/icons/bitcoin</normaloff>:/icons/bitcoin</iconset>
      </property>
     </widget>
@@ -512,7 +512,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>btca</string>
+      <string>btci</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_5">
@@ -638,7 +638,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="BtcAvailableLbl">
+       <widget class="QLabel" name="BTCIvailableLbl">
         <property name="palette">
          <palette>
           <active>
@@ -1069,7 +1069,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="BtcAvailableLbl_2">
+       <widget class="QLabel" name="BTCIvailableLbl_2">
         <property name="font">
          <font>
           <weight>75</weight>
@@ -1704,10 +1704,10 @@
       </rect>
      </property>
      <property name="text">
-      <string>btca</string>
+      <string>btci</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="UnitsInputbtca">
+    <widget class="QLineEdit" name="UnitsInputbtci">
      <property name="geometry">
       <rect>
        <x>310</x>
@@ -1741,7 +1741,7 @@
       </font>
      </property>
     </widget>
-    <widget class="QPushButton" name="SellbtcaBTN">
+    <widget class="QPushButton" name="SellbtciBTN">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -1751,10 +1751,10 @@
       </rect>
      </property>
      <property name="text">
-      <string>Sell btca</string>
+      <string>Sell btci</string>
      </property>
      <property name="icon">
-      <iconset resource="../btca">
+      <iconset resource="../btci">
        <normaloff>:/icons/bitcoin</normaloff>:/icons/bitcoin</iconset>
      </property>
     </widget>
@@ -1777,12 +1777,12 @@
          </font>
         </property>
         <property name="text">
-         <string>btca Available:</string>
+         <string>btci Available:</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="btcaAvailableLabel">
+       <widget class="QLabel" name="btciAvailableLabel">
         <property name="palette">
          <palette>
           <active>
@@ -2213,7 +2213,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="labelbtca">
+       <widget class="QLabel" name="labelbtci">
         <property name="font">
          <font>
           <weight>75</weight>
@@ -2221,7 +2221,7 @@
          </font>
         </property>
         <property name="text">
-         <string>btca</string>
+         <string>btci</string>
         </property>
        </widget>
       </item>
@@ -2733,7 +2733,7 @@
       <string>TextLabel</string>
      </property>
     </widget>
-    <widget class="QLabel" name="btcaBalanceLabel">
+    <widget class="QLabel" name="btciBalanceLabel">
      <property name="geometry">
       <rect>
        <x>150</x>
@@ -2762,7 +2762,7 @@
       </font>
      </property>
      <property name="text">
-      <string>btca Balance:</string>
+      <string>btci Balance:</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_12">
@@ -2784,7 +2784,7 @@
       <string>BTC Balance:</string>
      </property>
     </widget>
-    <widget class="QLabel" name="btcaAvailableLabel_2">
+    <widget class="QLabel" name="btciAvailableLabel_2">
      <property name="geometry">
       <rect>
        <x>150</x>
@@ -2813,7 +2813,7 @@
       </font>
      </property>
      <property name="text">
-      <string>btca Available:</string>
+      <string>btci Available:</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_14">
@@ -2832,10 +2832,10 @@
       </font>
      </property>
      <property name="text">
-      <string>btca Pending:</string>
+      <string>btci Pending:</string>
      </property>
     </widget>
-    <widget class="QLabel" name="btcaPendingLabel">
+    <widget class="QLabel" name="btciPendingLabel">
      <property name="geometry">
       <rect>
        <x>150</x>
@@ -2928,7 +2928,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Bittrex btca Deposit Address:</string>
+      <string>Bittrex btci Deposit Address:</string>
      </property>
     </widget>
     <widget class="QPushButton" name="GenDepositBTN">
@@ -2941,10 +2941,10 @@
       </rect>
      </property>
      <property name="text">
-      <string>Generate btca Deposit Address</string>
+      <string>Generate btci Deposit Address</string>
      </property>
      <property name="icon">
-      <iconset resource="../btca.qrc">
+      <iconset resource="../btci.qrc">
        <normaloff>:/icons/bitcoin</normaloff>:/icons/bitcoin</iconset>
      </property>
     </widget>
@@ -3155,7 +3155,7 @@
        <string notr="true">border: 1px solid #61696c;margin-left:4px;</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="btnConvertbtca">
+     <widget class="QPushButton" name="btnConvertbtci">
       <property name="geometry">
        <rect>
         <x>260</x>
@@ -3206,7 +3206,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="../btca.qrc">:/icons/transaction_1</pixmap>
+       <pixmap resource="../btci.qrc">:/icons/transaction_1</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -3253,7 +3253,7 @@
       <string>Update API Keys</string>
      </property>
      <property name="icon">
-      <iconset resource="../btca.qrc">
+      <iconset resource="../btci.qrc">
        <normaloff>:/icons/bitcoin</normaloff>:/icons/bitcoin</iconset>
      </property>
     </widget>
@@ -3408,7 +3408,7 @@
   </widget>
  </widget>
  <resources>
-  <include location="../btca.qrc"/>
+  <include location="../btci.qrc"/>
  </resources>
  <connections/>
 </ui>

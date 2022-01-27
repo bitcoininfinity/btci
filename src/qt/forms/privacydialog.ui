@@ -190,7 +190,7 @@
                       <item>
                        <layout class="QHBoxLayout" name="horizontalLayout_3">
                         <item>
-                         <widget class="QLabel" name="labelzbtcaActions">
+                         <widget class="QLabel" name="labelzbtciActions">
                           <property name="font">
                            <font>
                             <pointsize>12</pointsize>
@@ -207,9 +207,9 @@
                          </widget>
                         </item>
                         <item>
-                         <widget class="QLabel" name="labelzbtcaSyncStatus">
+                         <widget class="QLabel" name="labelzbtciSyncStatus">
                           <property name="toolTip">
-                           <string>The displayed information may be out of date. Your wallet automatically synchronizes with the btca network after a connection is established, but this process has not completed yet.</string>
+                           <string>The displayed information may be out of date. Your wallet automatically synchronizes with the btci network after a connection is established, but this process has not completed yet.</string>
                           </property>
                           <property name="styleSheet">
                            <string notr="true">QLabel { color: red; }</string>
@@ -262,7 +262,7 @@
                       <item>
                        <layout class="QHBoxLayout" name="horizontalLayout_4">
                         <item>
-                         <widget class="QPushButton" name="pushButtonMintzbtca">
+                         <widget class="QPushButton" name="pushButtonMintzbtci">
                           <property name="minimumSize">
                            <size>
                             <width>131</width>
@@ -270,7 +270,7 @@
                            </size>
                           </property>
                           <property name="toolTip">
-                           <string>Enter an amount of btca to convert to zbtca</string>
+                           <string>Enter an amount of btci to convert to zbtci</string>
                           </property>
                           <property name="text">
                            <string>Mint Zerocoin</string>
@@ -294,14 +294,14 @@
                          </widget>
                         </item>
                         <item>
-                         <widget class="QLabel" name="labelzbtca_2">
+                         <widget class="QLabel" name="labelzbtci_2">
                           <property name="text">
-                           <string>zbtca</string>
+                           <string>zbtci</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QLabel" name="labelzbtcaAmountText">
+                         <widget class="QLabel" name="labelzbtciAmountText">
                           <property name="toolTip">
                            <string>Available for minting are coins which are confirmed and not locked or Masternode collaterals.</string>
                           </property>
@@ -314,7 +314,7 @@
                          </widget>
                         </item>
                         <item>
-                         <widget class="QLabel" name="labelzbtcaAmountValue">
+                         <widget class="QLabel" name="labelzbtciAmountValue">
                           <property name="font">
                            <font>
                             <weight>75</weight>
@@ -322,10 +322,10 @@
                            </font>
                           </property>
                           <property name="toolTip">
-                           <string>Enter an amount of btca to convert to zbtca</string>
+                           <string>Enter an amount of btci to convert to zbtci</string>
                           </property>
                           <property name="text">
-                           <string>0.000 000 00 btca</string>
+                           <string>0.000 000 00 btci</string>
                           </property>
                           <property name="alignment">
                            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -501,7 +501,7 @@
                              <enum>Qt::ActionsContextMenu</enum>
                             </property>
                             <property name="text">
-                             <string notr="true">0.00 btca</string>
+                             <string notr="true">0.00 btci</string>
                             </property>
                             <property name="textInteractionFlags">
                              <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -621,21 +621,21 @@
                          <number>0</number>
                         </property>
                         <item>
-                         <widget class="QPushButton" name="pushButtonZbtcaControl">
+                         <widget class="QPushButton" name="pushButtonZbtciControl">
                           <property name="text">
-                           <string>zbtca Control</string>
+                           <string>zbtci Control</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QLabel" name="labelzbtcaSelected">
+                         <widget class="QLabel" name="labelzbtciSelected">
                           <property name="text">
-                           <string>zbtca Selected:</string>
+                           <string>zbtci Selected:</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QLabel" name="labelzbtcaSelected_int">
+                         <widget class="QLabel" name="labelzbtciSelected_int">
                           <property name="text">
                            <string>0</string>
                           </property>
@@ -689,7 +689,7 @@
                       <item>
                        <layout class="QHBoxLayout" name="horizontalLayout_6">
                         <item>
-                         <widget class="QPushButton" name="pushButtonSpendzbtca">
+                         <widget class="QPushButton" name="pushButtonSpendzbtci">
                           <property name="minimumSize">
                            <size>
                             <width>131</width>
@@ -705,9 +705,9 @@
                          </widget>
                         </item>
                         <item>
-                         <widget class="QLabel" name="labelzbtcaBalanceText">
+                         <widget class="QLabel" name="labelzbtciBalanceText">
                           <property name="toolTip">
-                           <string>Available (mature and spendable) zbtca for spending</string>
+                           <string>Available (mature and spendable) zbtci for spending</string>
                           </property>
                           <property name="text">
                            <string>Available Balance:</string>
@@ -726,12 +726,12 @@
                            </font>
                           </property>
                           <property name="toolTip">
-                           <string>Available (mature and spendable) zbtca for spending
+                           <string>Available (mature and spendable) zbtci for spending
 
-                            zbtca are mature when they have more than 20 confirmations AND more than 2 mints of the same denomination after them were minted</string>
+                            zbtci are mature when they have more than 20 confirmations AND more than 2 mints of the same denomination after them were minted</string>
                           </property>
                           <property name="text">
-                           <string>0 zbtca</string>
+                           <string>0 zbtci</string>
                           </property>
                           <property name="alignment">
                            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -845,7 +845,7 @@
                              </size>
                             </property>
                             <property name="toolTip">
-                             <string>The btca address to send the payment to. Creates local payment to yourself when empty.</string>
+                             <string>The btci address to send the payment to. Creates local payment to yourself when empty.</string>
                             </property>
                            </widget>
                           </item>
@@ -858,7 +858,7 @@
                              <string/>
                             </property>
                             <property name="icon">
-                             <iconset resource="../btca.qrc">
+                             <iconset resource="../btci.qrc">
                               <normaloff>:/icons/address-book</normaloff>:/icons/address-book</iconset>
                             </property>
                             <property name="shortcut">
@@ -875,7 +875,7 @@
                              <string/>
                             </property>
                             <property name="icon">
-                             <iconset resource="../btca.qrc">
+                             <iconset resource="../btci.qrc">
                               <normaloff>:/icons/editpaste</normaloff>:/icons/editpaste</iconset>
                             </property>
                             <property name="shortcut">
@@ -926,7 +926,7 @@
                            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                           </property>
                           <property name="buddy">
-                           <cstring>zbtcapayAmount</cstring>
+                           <cstring>zbtcipayAmount</cstring>
                           </property>
                          </widget>
                         </item>
@@ -936,10 +936,10 @@
                            <number>0</number>
                           </property>
                           <item>
-                           <widget class="QLineEdit" name="zbtcapayAmount"/>
+                           <widget class="QLineEdit" name="zbtcipayAmount"/>
                           </item>
                           <item>
-                           <widget class="QLabel" name="labelzbtca">
+                           <widget class="QLabel" name="labelzbtci">
                             <property name="minimumSize">
                              <size>
                               <width>55</width>
@@ -947,7 +947,7 @@
                              </size>
                             </property>
                             <property name="text">
-                             <string>zbtca</string>
+                             <string>zbtci</string>
                             </property>
                             <property name="alignment">
                              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1031,7 +1031,7 @@
                       <item>
                        <layout class="QHBoxLayout" name="horizontalLayout_21">
                         <item>
-                         <widget class="QLabel" name="labelzbtcaStats">
+                         <widget class="QLabel" name="labelzbtciStats">
                           <property name="font">
                            <font>
                             <pointsize>12</pointsize>
@@ -1111,7 +1111,7 @@
                            </font>
                           </property>
                           <property name="toolTip">
-                           <string>Total Balance including unconfirmed and immature zbtca</string>
+                           <string>Total Balance including unconfirmed and immature zbtci</string>
                           </property>
                           <property name="text">
                            <string>Total Zerocoin  Balance:</string>
@@ -1149,10 +1149,10 @@
                            </font>
                           </property>
                           <property name="toolTip">
-                           <string>Total Balance including unconfirmed and immature zbtca</string>
+                           <string>Total Balance including unconfirmed and immature zbtci</string>
                           </property>
                           <property name="text">
-                           <string>0 zbtca</string>
+                           <string>0 zbtci</string>
                           </property>
                           <property name="alignment">
                            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1609,14 +1609,14 @@
                         <item>
                          <widget class="QLabel" name="label_AutoMintStatus">
                           <property name="toolTip">
-                           <string>Show the current status of automatic zbtca minting.
+                           <string>Show the current status of automatic zbtci minting.
 
                             To change the status (restart required):
-                            - enable: add 'enablezeromint=1' to btca.conf
-                            - disable: add 'enablezeromint=0' to btca.conf
+                            - enable: add 'enablezeromint=1' to btci.conf
+                            - disable: add 'enablezeromint=0' to btci.conf
 
                             To change the percentage (no restart required):
-                            - menu Settings-&gt;Options-&gt;Percentage of autominted zbtca
+                            - menu Settings-&gt;Options-&gt;Percentage of autominted zbtci
                            </string>
                           </property>
                           <property name="text">
@@ -1695,7 +1695,7 @@
                            </font>
                           </property>
                           <property name="text">
-                           <string>0 zbtca</string>
+                           <string>0 zbtci</string>
                           </property>
                          </widget>
                         </item>
@@ -1726,7 +1726,7 @@
                         <item>
                          <widget class="QLabel" name="labelZsupplyAmount1">
                           <property name="text">
-                           <string>0 zbtca</string>
+                           <string>0 zbtci</string>
                           </property>
                          </widget>
                         </item>
@@ -1757,7 +1757,7 @@
                         <item>
                          <widget class="QLabel" name="labelZsupplyAmount5">
                           <property name="text">
-                           <string>0 zbtca</string>
+                           <string>0 zbtci</string>
                           </property>
                          </widget>
                         </item>
@@ -1788,7 +1788,7 @@
                         <item>
                          <widget class="QLabel" name="labelZsupplyAmount10">
                           <property name="text">
-                           <string>0 zbtca</string>
+                           <string>0 zbtci</string>
                           </property>
                          </widget>
                         </item>
@@ -1819,7 +1819,7 @@
                         <item>
                          <widget class="QLabel" name="labelZsupplyAmount50">
                           <property name="text">
-                           <string>0 zbtca</string>
+                           <string>0 zbtci</string>
                           </property>
                          </widget>
                         </item>
@@ -1850,7 +1850,7 @@
                         <item>
                          <widget class="QLabel" name="labelZsupplyAmount100">
                           <property name="text">
-                           <string>0 zbtca</string>
+                           <string>0 zbtci</string>
                           </property>
                          </widget>
                         </item>
@@ -1881,7 +1881,7 @@
                         <item>
                          <widget class="QLabel" name="labelZsupplyAmount500">
                           <property name="text">
-                           <string>0 zbtca</string>
+                           <string>0 zbtci</string>
                           </property>
                          </widget>
                         </item>
@@ -1912,7 +1912,7 @@
                         <item>
                          <widget class="QLabel" name="labelZsupplyAmount1000">
                           <property name="text">
-                           <string>0 zbtca</string>
+                           <string>0 zbtci</string>
                           </property>
                          </widget>
                         </item>
@@ -1943,7 +1943,7 @@
                         <item>
                          <widget class="QLabel" name="labelZsupplyAmount5000">
                           <property name="text">
-                           <string>0 zbtca</string>
+                           <string>0 zbtci</string>
                           </property>
                          </widget>
                         </item>
@@ -2073,7 +2073,7 @@
          <enum>Qt::ActionsContextMenu</enum>
         </property>
         <property name="text">
-         <string notr="true">0.000 000 00 btca</string>
+         <string notr="true">0.000 000 00 btci</string>
         </property>
         <property name="textInteractionFlags">
          <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -2155,7 +2155,7 @@
            <enum>Qt::ActionsContextMenu</enum>
           </property>
           <property name="text">
-           <string notr="true">0.00 btca</string>
+           <string notr="true">0.00 btci</string>
           </property>
           <property name="textInteractionFlags">
            <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -2377,7 +2377,7 @@
          <enum>Qt::ActionsContextMenu</enum>
         </property>
         <property name="text">
-         <string notr="true">0.000 000 00 btca</string>
+         <string notr="true">0.000 000 00 btci</string>
         </property>
         <property name="textInteractionFlags">
          <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -2694,7 +2694,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../btca.qrc"/>
+  <include location="../btci.qrc"/>
  </resources>
  <connections/>
 </ui>

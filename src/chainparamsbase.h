@@ -10,8 +10,8 @@
 #include <vector>
 
 /**
- * CBaseChainParams defines the base parameters (shared between btca-cli and btcad)
- * of a given instance of the btca system.
+ * CBaseChainParams defines the base parameters (shared between btci-cli and btcid)
+ * of a given instance of the btci system.
  */
 class CBaseChainParams
 {

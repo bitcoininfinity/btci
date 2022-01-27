@@ -291,7 +291,7 @@
                           <font/>
                          </property>
                          <property name="text">
-                          <string>btca Balance</string>
+                          <string>btci Balance</string>
                          </property>
                         </widget>
                        </item>
@@ -312,7 +312,7 @@
                        <item row="4" column="0">
                         <widget class="QLabel" name="labelLockedBalanceText">
                          <property name="toolTip">
-                          <string>Locked btca or Masternode collaterals. These are excluded from zbtca minting.</string>
+                          <string>Locked btci or Masternode collaterals. These are excluded from zbtci minting.</string>
                          </property>
                          <property name="text">
                           <string>Locked:</string>
@@ -322,7 +322,7 @@
                        <item row="5" column="0">
                         <widget class="QLabel" name="labelTotalText">
                          <property name="toolTip">
-                          <string>Your current btca balance, unconfirmed and immature transactions included</string>
+                          <string>Your current btci balance, unconfirmed and immature transactions included</string>
                          </property>
                          <property name="text">
                           <string>Total:</string>
@@ -388,7 +388,7 @@
                           <string>Your current balance in watch-only addresses</string>
                          </property>
                          <property name="text">
-                          <string notr="true">0.000 000 00 btca</string>
+                          <string notr="true">0.000 000 00 btci</string>
                          </property>
                          <property name="alignment">
                           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -410,7 +410,7 @@
                           <string>Your current spendable balance</string>
                          </property>
                          <property name="text">
-                          <string notr="true">0.000 000 00 btca</string>
+                          <string notr="true">0.000 000 00 btci</string>
                          </property>
                          <property name="alignment">
                           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -432,7 +432,7 @@
                           <string>Unconfirmed transactions to watch-only addresses</string>
                          </property>
                          <property name="text">
-                          <string notr="true">0.000 000 00 btca</string>
+                          <string notr="true">0.000 000 00 btci</string>
                          </property>
                          <property name="alignment">
                           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -454,7 +454,7 @@
                           <string>Total of transactions that have yet to be confirmed, and do not yet count toward the spendable balance</string>
                          </property>
                          <property name="text">
-                          <string notr="true">0.000 000 00 btca</string>
+                          <string notr="true">0.000 000 00 btci</string>
                          </property>
                          <property name="alignment">
                           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -476,7 +476,7 @@
                           <string>Staked or masternode rewards in watch-only addresses that has not yet matured</string>
                          </property>
                          <property name="text">
-                          <string notr="true">0.000 000 00 btca</string>
+                          <string notr="true">0.000 000 00 btci</string>
                          </property>
                          <property name="alignment">
                           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -498,7 +498,7 @@
                           <string>Staked or masternode rewards that has not yet matured</string>
                          </property>
                          <property name="text">
-                          <string notr="true">0.000 000 00 btca</string>
+                          <string notr="true">0.000 000 00 btci</string>
                          </property>
                          <property name="alignment">
                           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -520,7 +520,7 @@
                           <string>Current locked balance in watch-only addresses</string>
                          </property>
                          <property name="text">
-                          <string notr="true">0.000 000 00 btca</string>
+                          <string notr="true">0.000 000 00 btci</string>
                          </property>
                          <property name="alignment">
                           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -539,10 +539,10 @@
                           <cursorShape>IBeamCursor</cursorShape>
                          </property>
                          <property name="toolTip">
-                          <string>Locked btca or Masternode collaterals. These are excluded from zbtca minting.</string>
+                          <string>Locked btci or Masternode collaterals. These are excluded from zbtci minting.</string>
                          </property>
                          <property name="text">
-                          <string notr="true">0.000 000 00 btca</string>
+                          <string notr="true">0.000 000 00 btci</string>
                          </property>
                          <property name="alignment">
                           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -564,7 +564,7 @@
                           <string>Current total balance in watch-only addresses</string>
                          </property>
                          <property name="text">
-                          <string notr="true">0.000 000 00 btca</string>
+                          <string notr="true">0.000 000 00 btci</string>
                          </property>
                          <property name="alignment">
                           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -583,10 +583,10 @@
                           <cursorShape>IBeamCursor</cursorShape>
                          </property>
                          <property name="toolTip">
-                          <string>Your current btca balance, unconfirmed and immature transactions included</string>
+                          <string>Your current btci balance, unconfirmed and immature transactions included</string>
                          </property>
                          <property name="text">
-                          <string notr="true">0.000 000 00 btca</string>
+                          <string notr="true">0.000 000 00 btci</string>
                          </property>
                          <property name="alignment">
                           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -688,7 +688,7 @@
                        <cursorShape>WhatsThisCursor</cursorShape>
                       </property>
                       <property name="toolTip">
-                       <string>The displayed information may be out of date. Your wallet automatically synchronizes with the btca network after a connection is established, but this process has not completed yet.</string>
+                       <string>The displayed information may be out of date. Your wallet automatically synchronizes with the btci network after a connection is established, but this process has not completed yet.</string>
                       </property>
                       <property name="styleSheet">
                        <string notr="true">QLabel { color: red; }</string>

@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef btca_PUBKEY_H
-#define btca_PUBKEY_H
+#ifndef btci_PUBKEY_H
+#define btci_PUBKEY_H
 
 #include "hash.h"
 #include "serialize.h"
@@ -268,4 +268,4 @@ public:
     ~ECCVerifyHandle();
 };
 
-#endif // btca_PUBKEY_H
+#endif // btci_PUBKEY_H

@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef btca_BLOCKSIGNATURE_H
-#define btca_BLOCKSIGNATURE_H
+#ifndef btci_BLOCKSIGNATURE_H
+#define btci_BLOCKSIGNATURE_H
 
 #include "key.h"
 #include "primitives/block.h"
@@ -13,4 +13,4 @@ bool SignBlockWithKey(CBlock& block, const CKey& key);
 bool SignBlock(CBlock& block, const CKeyStore& keystore);
 bool CheckBlockSignature(const CBlock& block);
 
-#endif //btca_BLOCKSIGNATURE_H
+#endif //btci_BLOCKSIGNATURE_H

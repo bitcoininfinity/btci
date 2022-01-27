@@ -2,15 +2,15 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef btca_ZbtcaTRACKER_H
-#define btca_ZbtcaTRACKER_H
+#ifndef btci_ZbtciTRACKER_H
+#define btci_ZbtciTRACKER_H
 
 #include "primitives/zerocoin.h"
 #include <list>
 
 class CDeterministicMint;
 
-class CzbtcaTracker
+class CzbtciTracker
 {
 private:
     bool fInitialized;
@@ -19,8 +19,8 @@ private:
     std::map<uint256, uint256> mapPendingSpends; //serialhash, txid of spend
     bool UpdateStatusInternal(const std::set<uint256>& setMempool, CMintMeta& mint);
 public:
-    CzbtcaTracker(std::string strWalletFile);
-    ~CzbtcaTracker();
+    CzbtciTracker(std::string strWalletFile);
+    ~CzbtciTracker();
     void Add(const CDeterministicMint& dMint, bool isNew = false, bool isArchived = false);
     void Add(const CZerocoinMint& mint, bool isNew = false, bool isArchived = false);
     bool Archive(CMintMeta& meta);
@@ -48,4 +48,4 @@ public:
     void Clear();
 };
 
-#endif //btca_ZbtcaTRACKER_H
+#endif //btci_ZbtciTRACKER_H

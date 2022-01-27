@@ -4,8 +4,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef btca_SERIALIZE_H
-#define btca_SERIALIZE_H
+#ifndef btci_SERIALIZE_H
+#define btci_SERIALIZE_H
 
 #include <algorithm>
 #include <assert.h>
@@ -965,4 +965,4 @@ public:
     }
 };
 
-#endif // btca_SERIALIZE_H
+#endif // btci_SERIALIZE_H

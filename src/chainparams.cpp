@@ -2,7 +2,7 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2018 The PIVX developers
-// Copyright (c) 2020 The btca developers
+// Copyright (c) 2020 The btci developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -115,10 +115,10 @@ public:
         pchMessageStart[3] = 0x4D;
         vAlertPubKey = ParseHex("046be0fe2389c302a1649ba54eb6c72053042f1955f8a61d393c2059430a33156dd73abe5e26c52c3d1cd25a373fcc9388ceebbcb0e308eeb2212298cefe665b6d"); // mainalert pub
         nDefaultPort = 21110;
-        bnProofOfWorkLimit = ~uint256(0) >> 20; // btca starting difficulty is 1 / 2^12
+        bnProofOfWorkLimit = ~uint256(0) >> 20; // btci starting difficulty is 1 / 2^12
         nMaxReorganizationDepth = 100;
         nMinerThreads = 0;
-        nTargetSpacing = 1 * 60;  // btca: 1 minutes
+        nTargetSpacing = 1 * 60;  // btci: 1 minutes
         nMaturity = 110;
         nMaxMoneyOut = 21000000 * COIN;
 
@@ -142,7 +142,7 @@ public:
          *     CTxOut(nValue=50.00000000, scriptPubKey=0xA9037BAC7050C479B121CF)
          *   vMerkleTree: e0028e
          */
-        const char* pszTimestamp = "Wed Nov 17 2021 21:00:00 GMT+0000 - start blockchain BTCA.";
+        const char* pszTimestamp = "Wed Nov 17 2021 21:00:00 GMT+0000 - start blockchain BTCI.";
         CMutableTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -172,8 +172,8 @@ public:
 		vSeeds.push_back(CDNSSeedData("b874102.online", "b874102.online"));
 		vSeeds.push_back(CDNSSeedData("b675431.online", "b675431.online"));
 
-        // btca addresses start with 'С'
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 25); // btca addresses start with 'K' https://en.bitcoin.it/wiki/List_of_address_prefixes
+        // btci addresses start with 'С'
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 25); // btci addresses start with 'K' https://en.bitcoin.it/wiki/List_of_address_prefixes
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 30);
         base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 128+97);
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x02)(0x2D)(0x25)(0x33).convert_to_container<std::vector<unsigned char> >();
@@ -209,7 +209,7 @@ public:
         nRequiredAccumulation = 1;
         nDefaultSecurityLevel = 100; //full security level for accumulators
         nZerocoinHeaderVersion = 4; //Block headers must be this version once zerocoin is active
-        nZerocoinRequiredStakeDepth = 200; //The required confirmations for a zbtca to be stakable
+        nZerocoinRequiredStakeDepth = 200; //The required confirmations for a zbtci to be stakable
 
         nBudget_Fee_Confirmations = 6; // Number of confirmations for the finalization fee
     }
@@ -260,8 +260,8 @@ public:
         vFixedSeeds.clear();
         vSeeds.clear();
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 25); // Testnet btca addresses start with 'K' https://en.bitcoin.it/wiki/List_of_address_prefixes
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 98);  // Testnet btca script addresses start with '8' or '9'
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 25); // Testnet btci addresses start with 'K' https://en.bitcoin.it/wiki/List_of_address_prefixes
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 98);  // Testnet btci script addresses start with '8' or '9'
         base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 128+98);     // Testnet private keys start with '9' or 'c' (Bitcoin defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x3a)(0x80)(0x61)(0xa0).convert_to_container<std::vector<unsigned char> >();
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x3a)(0x80)(0x58)(0x37).convert_to_container<std::vector<unsigned char> >();

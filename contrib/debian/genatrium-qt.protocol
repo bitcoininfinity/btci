@@ -1,6 +1,6 @@
 [Protocol]
-exec=btca-qt '%u'
-protocol=btca
+exec=btci-qt '%u'
+protocol=btci
 input=none
 output=none
 helper=true

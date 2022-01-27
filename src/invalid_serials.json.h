@@ -4,8 +4,8 @@
 
 
 
-#ifndef btca_INVALID_SERIALS_JSON_H
-#define btca_INVALID_SERIALS_JSON_H
+#ifndef btci_INVALID_SERIALS_JSON_H
+#define btci_INVALID_SERIALS_JSON_H
 
 #include <string>
 
@@ -15,4 +15,4 @@ std::string LoadInvalidSerials()
     return str;
 }
 
-#endif //btca_INVALID_SERIALS_JSON_H
+#endif //btci_INVALID_SERIALS_JSON_H

@@ -53,14 +53,14 @@ BOOST_AUTO_TEST_CASE(May15)
     unsigned int tMay15 = 1368576000;
     SetMockTime(tMay15); // Test as if it was right at May 15
 
-    CBlock btcaBlock;
-    if (read_block("Mar12Fork.dat", btcaBlock))
+    CBlock btciBlock;
+    if (read_block("Mar12Fork.dat", btciBlock))
     {
         CValidationState state;
 
         // After May 15'th, big blocks are OK:
-        btcaBlock.nTime = tMay15; // Invalidates PoW
-        BOOST_CHECK(CheckBlock(btcaBlock, state, false, false));
+        btciBlock.nTime = tMay15; // Invalidates PoW
+        BOOST_CHECK(CheckBlock(btciBlock, state, false, false));
     }
 
     SetMockTime(0);

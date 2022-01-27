@@ -1,10 +1,10 @@
 // Copyright (c) 2017-2018 The PIVX developers
-// Copyright (c) 2020 The btca developers
+// Copyright (c) 2020 The btci developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef ZbtcaCONTROLDIALOG_H
-#define ZbtcaCONTROLDIALOG_H
+#ifndef ZbtciCONTROLDIALOG_H
+#define ZbtciCONTROLDIALOG_H
 
 #include <QDialog>
 #include <QTreeWidgetItem>
@@ -14,16 +14,16 @@ class CZerocoinMint;
 class WalletModel;
 
 namespace Ui {
-class ZbtcaControlDialog;
+class ZbtciControlDialog;
 }
 
-class ZbtcaControlDialog : public QDialog
+class ZbtciControlDialog : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit ZbtcaControlDialog(QWidget *parent);
-    ~ZbtcaControlDialog();
+    explicit ZbtciControlDialog(QWidget *parent);
+    ~ZbtciControlDialog();
 
     void setModel(WalletModel* model);
 
@@ -32,7 +32,7 @@ public:
     static std::vector<CMintMeta> GetSelectedMints();
 
 private:
-    Ui::ZbtcaControlDialog *ui;
+    Ui::ZbtciControlDialog *ui;
     WalletModel* model;
 
     void updateList();
@@ -52,4 +52,4 @@ private slots:
     void ButtonAllClicked();
 };
 
-#endif // ZbtcaCONTROLDIALOG_H
+#endif // ZbtciCONTROLDIALOG_H

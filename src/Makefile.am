@@ -80,15 +80,15 @@ noinst_PROGRAMS =
 TESTS =
 
 if BUILD_BITCOIND
-  bin_PROGRAMS += btcad
+  bin_PROGRAMS += btcid
 endif
 
 if BUILD_BITCOIN_UTILS
-  bin_PROGRAMS += btca-cli btca-tx
+  bin_PROGRAMS += btci-cli btci-tx
 endif
 
 .PHONY: FORCE
-# btca core #
+# btci core #
 BITCOIN_CORE_H = \
   activemasternode.h \
   accumulators.h \
@@ -192,9 +192,9 @@ BITCOIN_CORE_H = \
   wallet.h \
   wallet_ismine.h \
   walletdb.h \
-  zbtcachain.h \
-  zbtcatracker.h \
-  zbtcawallet.h \
+  zbtcichain.h \
+  zbtcitracker.h \
+  zbtciwallet.h \
   zmq/zmqabstractnotifier.h \
   zmq/zmqconfig.h \
   zmq/zmqnotificationinterface.h \
@@ -206,7 +206,7 @@ obj/build.h: FORCE
 	  "$(abs_top_srcdir)"
 libbitcoin_util_a-clientversion.$(OBJEXT): obj/build.h
 
-# server: shared between btcad and btca-qt
+# server: shared between btcid and btci-qt
 libbitcoin_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
 libbitcoin_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_server_a_SOURCES = \
@@ -242,7 +242,7 @@ libbitcoin_server_a_SOURCES = \
   txdb.cpp \
   txmempool.cpp \
   validationinterface.cpp \
-  zbtcachain.cpp \
+  zbtcichain.cpp \
   $(BITCOIN_CORE_H)
 
 if ENABLE_ZMQ
@@ -254,7 +254,7 @@ libbitcoin_zmq_a_SOURCES = \
   zmq/zmqpublishnotifier.cpp
 endif
 
-# wallet: shared between btcad and btca-qt, but only linked
+# wallet: shared between btcid and btci-qt, but only linked
 # when wallet enabled
 libbitcoin_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 libbitcoin_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
@@ -282,8 +282,8 @@ libbitcoin_wallet_a_SOURCES = \
   wallet.cpp \
   wallet_ismine.cpp \
   walletdb.cpp \
-  zbtcawallet.cpp \
-  zbtcatracker.cpp \
+  zbtciwallet.cpp \
+  zbtcitracker.cpp \
   stakeinput.cpp \
   $(BITCOIN_CORE_H)
 
@@ -349,7 +349,7 @@ libzerocoin_libbitcoin_zerocoin_a_SOURCES = \
   libzerocoin/Params.cpp \
   libzerocoin/SerialNumberSignatureOfKnowledge.cpp
 
-# common: shared between btcad, and btca-qt and non-server tools
+# common: shared between btcid, and btci-qt and non-server tools
 libbitcoin_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 libbitcoin_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_common_a_SOURCES = \
@@ -412,7 +412,7 @@ if GLIBC_BACK_COMPAT
 libbitcoin_util_a_SOURCES += compat/glibc_compat.cpp
 endif
 
-# cli: shared between btca-cli and btca-qt
+# cli: shared between btci-cli and btci-qt
 libbitcoin_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 libbitcoin_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_cli_a_SOURCES = \
@@ -422,16 +422,16 @@ libbitcoin_cli_a_SOURCES = \
 nodist_libbitcoin_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
-# btcad binary #
-btcad_SOURCES = btcad.cpp
-btcad_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-btcad_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-btcad_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# btcid binary #
+btcid_SOURCES = btcid.cpp
+btcid_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+btcid_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+btcid_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-btcad_SOURCES += btcad-res.rc
+btcid_SOURCES += btcid-res.rc
 endif
-btcad_LDADD = \
+btcid_LDADD = \
   $(LIBBITCOIN_SERVER) \
   $(LIBBITCOIN_COMMON) \
   $(LIBUNIVALUE) \
@@ -444,38 +444,38 @@ btcad_LDADD = \
   $(LIBMEMENV) \
   $(LIBSECP256K1)
 
-btcad_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS)
+btcid_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS)
 
-# btca-cli binary #
-btca_cli_SOURCES = btca-cli.cpp
-btca_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
-btca_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-btca_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# btci-cli binary #
+btci_cli_SOURCES = btci-cli.cpp
+btci_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
+btci_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+btci_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-btca_cli_SOURCES += btca-cli-res.rc
+btci_cli_SOURCES += btci-cli-res.rc
 endif
 
-btca_cli_LDADD = \
+btci_cli_LDADD = \
   $(LIBBITCOIN_CLI) \
   $(LIBUNIVALUE) \
   $(LIBBITCOIN_UTIL) \
   $(LIBBITCOIN_CRYPTO)
 
-btca_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
+btci_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
 #
 
-# btca-tx binary #
-btca_tx_SOURCES = btca-tx.cpp
-btca_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-btca_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-btca_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# btci-tx binary #
+btci_tx_SOURCES = btci-tx.cpp
+btci_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+btci_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+btci_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-btca_tx_SOURCES += btca-tx-res.rc
+btci_tx_SOURCES += btci-tx-res.rc
 endif
 
-btca_tx_LDADD = \
+btci_tx_LDADD = \
   $(LIBUNIVALUE) \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_ZEROCOIN) \
@@ -483,7 +483,7 @@ btca_tx_LDADD = \
   $(LIBBITCOIN_CRYPTO) \
   $(LIBSECP256K1)
 
-btca_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
+btci_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
 #
 
 # bitcoinconsensus library #

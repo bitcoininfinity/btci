@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef btca_ACCUMULATORMAP_H
-#define btca_ACCUMULATORMAP_H
+#ifndef btci_ACCUMULATORMAP_H
+#define btci_ACCUMULATORMAP_H
 
 #include "libzerocoin/Accumulator.h"
 #include "libzerocoin/Coin.h"
@@ -25,4 +25,4 @@ public:
     void Reset();
     void Reset(libzerocoin::ZerocoinParams* params2);
 };
-#endif //btca_ACCUMULATORMAP_H
+#endif //btci_ACCUMULATORMAP_H

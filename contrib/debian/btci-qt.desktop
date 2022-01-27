@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=btci
+Comment=btci P2P Cryptocurrency
+Comment[fr]=btci, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=btci, eşten eşe kriptografik sanal para birimi
+Exec=btci-qt %u
+Terminal=false
+Type=Application
+Icon=btci128
+MimeType=x-scheme-handler/btci;
+Categories=Office;Finance;

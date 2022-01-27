@@ -3,7 +3,7 @@
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2018 The PIVX developers
 // Copyright (c) 2017-2019 The Phore Developers
-// Copyright (c) 2020 The btca developers
+// Copyright (c) 2020 The btci developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -35,7 +35,7 @@
 #include "util.h"
 #include "utilmoneystr.h"
 #include "validationinterface.h"
-#include "zbtcachain.h"
+#include "zbtcichain.h"
 
 #include "primitives/zerocoin.h"
 #include "libzerocoin/Denominations.h"
@@ -54,7 +54,7 @@ using namespace std;
 using namespace libzerocoin;
 
 #if defined(NDEBUG)
-#error "btca cannot be compiled without assertions."
+#error "btci cannot be compiled without assertions."
 #endif
 
 /**
@@ -86,7 +86,7 @@ bool fAlerts = DEFAULT_ALERTS;
 unsigned int nStakeMinAge = 1 * 60 * 60;
 int64_t nReserveBalance = 0;
 
-/** Fees smaller than this (in ubtca) are considered zero fee (for relaying and mining)
+/** Fees smaller than this (in ubtci) are considered zero fee (for relaying and mining)
  * We are ~100 times smaller then bitcoin now (2015-06-23), set minRelayTxFee only 10 times higher
  * so it's still 10 times lower comparing to bitcoin.
  */
@@ -419,7 +419,7 @@ void FindNextBlocksToDownload(NodeId nodeid, unsigned int count, std::vector<CBl
     }
 
     if (state->pindexLastCommonBlock == NULL) {
-        // Bootstrap quickly by guessing a parent of our best tip is the btca point.
+        // Bootstrap quickly by guessing a parent of our best tip is the btci point.
         // Guessing wrong in either direction is not a problem.
         state->pindexLastCommonBlock = chainActive[std::min(state->pindexBestKnownBlock->nHeight, chainActive.Height())];
     }
@@ -953,16 +953,16 @@ bool ContextualCheckZerocoinMint(const CTransaction& tx, const PublicCoin& coin,
 
 bool ContextualCheckZerocoinSpend(const CTransaction& tx, const CoinSpend& spend, CBlockIndex* pindex, const uint256& hashBlock)
 {
-    //Check to see if the zbtcais properly signed
+    //Check to see if the zbtciis properly signed
     if (pindex->nHeight >= Params().Zerocoin_Block_V2_Start()) {
         if (!spend.HasValidSignature())
-            return error("%s: V2 zbtcaspend does not have a valid signature", __func__);
+            return error("%s: V2 zbtcispend does not have a valid signature", __func__);
 
         libzerocoin::SpendType expectedType = libzerocoin::SpendType::SPEND;
         if (tx.IsCoinStake())
             expectedType = libzerocoin::SpendType::STAKE;
         if (spend.getSpendType() != expectedType) {
-            return error("%s: trying to spend zbtcawithout the correct spend type. txid=%s", __func__,
+            return error("%s: trying to spend zbtciwithout the correct spend type. txid=%s", __func__,
                          tx.GetHash().GetHex());
         }
     }
@@ -970,13 +970,13 @@ bool ContextualCheckZerocoinSpend(const CTransaction& tx, const CoinSpend& spend
     //Reject serial's that are already in the blockchain
     int nHeightTx = 0;
     if (IsSerialInBlockchain(spend.getCoinSerialNumber(), nHeightTx))
-        return error("%s : zbtcaspend with serial %s is already in block %d\n", __func__,
+        return error("%s : zbtcispend with serial %s is already in block %d\n", __func__,
                      spend.getCoinSerialNumber().GetHex(), nHeightTx);
 
     //Reject serial's that are not in the acceptable value range
     bool fUseV1Params = spend.getVersion() < libzerocoin::PrivateCoin::PUBKEY_VERSION;
     if (!spend.HasValidSerial(Params().Zerocoin_Params(fUseV1Params)))
-        return error("%s : zbtcaspend with serial %s from tx %s is not in valid range\n", __func__,
+        return error("%s : zbtcispend with serial %s from tx %s is not in valid range\n", __func__,
                      spend.getCoinSerialNumber().GetHex(), tx.GetHash().GetHex());
 
     return true;
@@ -1284,7 +1284,7 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState& state, const CTransa
             //Check that txid is not already in the chain
             int nHeightTx = 0;
             if (IsTransactionInChain(tx.GetHash(), nHeightTx))
-                return state.Invalid(error("AcceptToMemoryPool : zbtcaspend tx %s already in block %d",
+                return state.Invalid(error("AcceptToMemoryPool : zbtcispend tx %s already in block %d",
                                            tx.GetHash().GetHex(), nHeightTx), REJECT_DUPLICATE, "bad-txns-inputs-spent");
 
             //Check for double spending of serial #'s
@@ -1294,7 +1294,7 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState& state, const CTransa
                 CoinSpend spend = TxInToZerocoinSpend(txIn);
                 if (!ContextualCheckZerocoinSpend(tx, spend, chainActive.Tip(), 0))
                     return state.Invalid(error("%s: ContextualCheckZerocoinSpend failed for tx %s", __func__,
-                                               tx.GetHash().GetHex()), REJECT_INVALID, "bad-txns-invalid-zbtca");
+                                               tx.GetHash().GetHex()), REJECT_INVALID, "bad-txns-invalid-zbtci");
             }
         } else {
             LOCK(pool.cs);
@@ -1322,7 +1322,7 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState& state, const CTransa
                 }
             }
 
-            // Check that zbtcamints are not already known
+            // Check that zbtcimints are not already known
             if (tx.IsZerocoinMint()) {
                 for (auto& out : tx.vout) {
                     if (!out.IsZerocoinMint())
@@ -1820,7 +1820,7 @@ int64_t GetBlockValue(int nHeight)
     }
 }
 
-int64_t GetMasternodePayment(int nHeight, int64_t blockValue, bool isZbtcaStake)
+int64_t GetMasternodePayment(int nHeight, int64_t blockValue, bool isZbtciStake)
 {
     if(nHeight < Params().LAST_POW_BLOCK()){
         return COIN * 0;
@@ -1865,14 +1865,14 @@ void CheckForkWarningConditions()
     if (pindexBestForkTip || (pindexBestInvalid && pindexBestInvalid->nChainWork > chainActive.Tip()->nChainWork + (GetBlockProof(*chainActive.Tip()) * 6))) {
         if (!fLargeWorkForkFound && pindexBestForkBase) {
             if (pindexBestForkBase->phashBlock) {
-                std::string warning = std::string("'Warning: Large-work fork detected, btca after block ") +
+                std::string warning = std::string("'Warning: Large-work fork detected, btci after block ") +
                                       pindexBestForkBase->phashBlock->ToString() + std::string("'");
                 CAlert::Notify(warning, true);
             }
         }
         if (pindexBestForkTip && pindexBestForkBase) {
             if (pindexBestForkBase->phashBlock) {
-                LogPrintf("CheckForkWarningConditions: Warning: Large valid fork found\n  btca the chain at height %d (%s)\n  lasting to height %d (%s).\nChain state database corruption likely.\n",
+                LogPrintf("CheckForkWarningConditions: Warning: Large valid fork found\n  btci the chain at height %d (%s)\n  lasting to height %d (%s).\nChain state database corruption likely.\n",
                     pindexBestForkBase->nHeight, pindexBestForkBase->phashBlock->ToString(),
                     pindexBestForkTip->nHeight, pindexBestForkTip->phashBlock->ToString());
                 fLargeWorkForkFound = true;
@@ -2195,7 +2195,7 @@ bool DisconnectBlock(CBlock& block, CValidationState& state, CBlockIndex* pindex
         const CTransaction& tx = block.vtx[i];
 
         /** UNDO ZEROCOIN DATABASING
-         * note we only undo zerocoin databasing in the following statement, value to and from btca
+         * note we only undo zerocoin databasing in the following statement, value to and from btci
          * addresses should still be handled by the typical bitcoin based undo code
          * */
         if (tx.ContainsZerocoins()) {
@@ -2341,11 +2341,11 @@ static CCheckQueue<CScriptCheck> scriptcheckqueue(128);
 
 void ThreadScriptCheck()
 {
-    RenameThread("btca-scriptch");
+    RenameThread("btci-scriptch");
     scriptcheckqueue.Thread();
 }
 
-void RecalculateZbtcaMinted()
+void RecalculateZbtciMinted()
 {
     CBlockIndex *pindex = chainActive[Params().Zerocoin_StartHeight()];
     int nHeightEnd = chainActive.Height();
@@ -2372,14 +2372,14 @@ void RecalculateZbtcaMinted()
     }
 }
 
-void RecalculateZbtcaSpent()
+void RecalculateZbtciSpent()
 {
     CBlockIndex* pindex = chainActive[Params().Zerocoin_StartHeight()];
     while (true) {
         if (pindex->nHeight % 1000 == 0)
             LogPrintf("%s : block %d...\n", __func__, pindex->nHeight);
 
-        //Rewrite zbtcasupply
+        //Rewrite zbtcisupply
         CBlock block;
         assert(ReadBlockFromDisk(block, pindex));
 
@@ -2388,13 +2388,13 @@ void RecalculateZbtcaSpent()
         //Reset the supply to previous block
         pindex->mapZerocoinSupply = pindex->pprev->mapZerocoinSupply;
 
-        //Add mints to zbtcasupply
+        //Add mints to zbtcisupply
         for (auto denom : libzerocoin::zerocoinDenomList) {
             long nDenomAdded = count(pindex->vMintDenominationsInBlock.begin(), pindex->vMintDenominationsInBlock.end(), denom);
             pindex->mapZerocoinSupply.at(denom) += nDenomAdded;
         }
 
-        //Remove spends from zbtcasupply
+        //Remove spends from zbtcisupply
         for (auto denom : listDenomsSpent)
             pindex->mapZerocoinSupply.at(denom)--;
 
@@ -2408,7 +2408,7 @@ void RecalculateZbtcaSpent()
     }
 }
 
-bool RecalculatebtcaSupply(int nHeightStart)
+bool RecalculatebtciSupply(int nHeightStart)
 {
     if (nHeightStart > chainActive.Height())
         return false;
@@ -2468,7 +2468,7 @@ bool RecalculatebtcaSupply(int nHeightStart)
 
 bool ReindexAccumulators(list<uint256>& listMissingCheckpoints, string& strError)
 {
-    // btca: recalculate Accumulator Checkpoints that failed to database properly
+    // btci: recalculate Accumulator Checkpoints that failed to database properly
     if (!listMissingCheckpoints.empty() && chainActive.Height() >= Params().Zerocoin_StartHeight()) {
         uiInterface.ShowProgress(_("Calculating missing accumulators..."), 0);
         LogPrintf("%s : finding missing checkpoints\n", __func__);
@@ -2516,7 +2516,7 @@ bool ReindexAccumulators(list<uint256>& listMissingCheckpoints, string& strError
     return true;
 }
 
-bool UpdateZbtcaSupply(const CBlock& block, CBlockIndex* pindex)
+bool UpdateZbtciSupply(const CBlock& block, CBlockIndex* pindex)
 {
     std::list<CZerocoinMint> listMints;
     bool fFilterInvalid = true;
@@ -2692,7 +2692,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
                     return state.DoS(100, error("%s: failed to add block %s with invalid zerocoinspend", __func__, tx.GetHash().GetHex()), REJECT_INVALID);
             }
 
-            // Check that zbtcamints are not already known
+            // Check that zbtcimints are not already known
             if (tx.IsZerocoinMint()) {
                 for (auto& out : tx.vout) {
                     if (!out.IsZerocoinMint())
@@ -2721,7 +2721,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
                 }
             }
 
-            // Check that zbtcamints are not already known
+            // Check that zbtcimints are not already known
             if (tx.IsZerocoinMint()) {
                 for (auto& out : tx.vout) {
                     if (!out.IsZerocoinMint())
@@ -2767,9 +2767,9 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
         pos.nTxOffset += ::GetSerializeSize(tx, SER_DISK, CLIENT_VERSION);
     }
 
-    //Track zbtcamoney supply in the block index
-    if (!UpdateZbtcaSupply(block, pindex))
-        return state.DoS(100, error("%s: Failed to calculate new zbtcasupply for block=%s height=%d", __func__,
+    //Track zbtcimoney supply in the block index
+    if (!UpdateZbtciSupply(block, pindex))
+        return state.DoS(100, error("%s: Failed to calculate new zbtcisupply for block=%s height=%d", __func__,
                                     block.GetHash().GetHex(), pindex->nHeight), REJECT_INVALID);
 
     // track money supply and mint amount info
@@ -2777,7 +2777,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
     pindex->nMoneySupply = nMoneySupplyPrev + nValueOut - nValueIn;
     pindex->nMint = pindex->nMoneySupply - nMoneySupplyPrev + nFees;
 
-//    LogPrintf("XX69----------> ConnectBlock(): nValueOut: %s, nValueIn: %s, nFees: %s, nMint: %s zbtcaSpent: %s\n",
+//    LogPrintf("XX69----------> ConnectBlock(): nValueOut: %s, nValueIn: %s, nFees: %s, nMint: %s zbtciSpent: %s\n",
 //              FormatMoney(nValueOut), FormatMoney(nValueIn),
 //              FormatMoney(nFees), FormatMoney(pindex->nMint), FormatMoney(nAmountZerocoinSpent));
 
@@ -2831,7 +2831,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
         setDirtyBlockIndex.insert(pindex);
     }
 
-    //Record zbtcaserials
+    //Record zbtciserials
     set<uint256> setAddedTx;
     for (pair<CoinSpend, uint256> pSpend : vSpends) {
         // Send signal to wallet if this is ours
@@ -2989,7 +2989,7 @@ void static UpdateTip(CBlockIndex* pindexNew)
 {
     chainActive.SetTip(pindexNew);
 
-    // If turned on AutoZeromint will automatically convert btcato zbtca
+    // If turned on AutoZeromint will automatically convert btcito zbtci
     if (pwalletMain->isZeromintEnabled ())
         pwalletMain->AutoZeromint ();
 
@@ -3830,7 +3830,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
                 nHeight = (*mi).second->nHeight + 1;
         }
 
-        // btca
+        // btci
         // It is entierly possible that we don't have enough data and this could fail
         // (i.e. the block could indeed be valid). Store the block for later consideration
         // but issue an initial reject message.
@@ -3855,13 +3855,13 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
         if (!CheckTransaction(tx, fZerocoinActive, state))
             return error("CheckBlock() : CheckTransaction failed");
 
-        // double check that there are no double spent zbtcaspends in this block
+        // double check that there are no double spent zbtcispends in this block
         if (tx.IsZerocoinSpend()) {
             for (const CTxIn& txIn : tx.vin) {
                 if (txIn.scriptSig.IsZerocoinSpend()) {
                     libzerocoin::CoinSpend spend = TxInToZerocoinSpend(txIn);
                     if (count(vBlockSerials.begin(), vBlockSerials.end(), spend.getCoinSerialNumber()))
-                        return state.DoS(100, error("%s : Double spending of zbtcaserial %s in block\n Block: %s",
+                        return state.DoS(100, error("%s : Double spending of zbtciserial %s in block\n Block: %s",
                                                     __func__, spend.getCoinSerialNumber().GetHex(), block.ToString()));
                     vBlockSerials.emplace_back(spend.getCoinSerialNumber());
                 }
@@ -4065,21 +4065,21 @@ bool AcceptBlockHeader(const CBlock& block, CValidationState& state, CBlockIndex
 bool ContextualCheckZerocoinStake(int nHeight, CStakeInput* stake)
 {
     if (nHeight < Params().Zerocoin_Block_V2_Start())
-        return error("%s: zbtcastake block is less than allowed start height", __func__);
+        return error("%s: zbtcistake block is less than allowed start height", __func__);
 
-    if (CZbtcaStake* zbtca= dynamic_cast<CZbtcaStake*>(stake)) {
-        CBlockIndex* pindexFrom = zbtca->GetIndexFrom();
+    if (CZbtciStake* zbtci= dynamic_cast<CZbtciStake*>(stake)) {
+        CBlockIndex* pindexFrom = zbtci->GetIndexFrom();
         if (!pindexFrom)
-            return error("%s: failed to get index associated with zbtcastake checksum", __func__);
+            return error("%s: failed to get index associated with zbtcistake checksum", __func__);
 
         if (chainActive.Height() - pindexFrom->nHeight < Params().Zerocoin_RequiredStakeDepth())
-            return error("%s: zbtcastake does not have required confirmation depth", __func__);
+            return error("%s: zbtcistake does not have required confirmation depth", __func__);
 
         //The checksum needs to be the exact checksum from 200 blocks ago
         uint256 nCheckpoint200 = chainActive[nHeight - Params().Zerocoin_RequiredStakeDepth()]->nAccumulatorCheckpoint;
-        uint32_t nChecksum200 = ParseChecksum(nCheckpoint200, libzerocoin::AmountToZerocoinDenomination(zbtca->GetValue()));
-        if (nChecksum200 != zbtca->GetChecksum())
-            return error("%s: accumulator checksum is different than the block 200 blocks previous. stake=%d block200=%d", __func__, zbtca->GetChecksum(), nChecksum200);
+        uint32_t nChecksum200 = ParseChecksum(nCheckpoint200, libzerocoin::AmountToZerocoinDenomination(zbtci->GetValue()));
+        if (nChecksum200 != zbtci->GetChecksum())
+            return error("%s: accumulator checksum is different than the block 200 blocks previous. stake=%d block200=%d", __func__, zbtci->GetChecksum(), nChecksum200);
     } else {
         return error("%s: dynamic_cast of stake ptr failed", __func__);
     }
@@ -4129,8 +4129,8 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** ppindex, 
         if (!stake)
             return error("%s: null stake ptr", __func__);
 
-        if (stake->IsZbtca() && !ContextualCheckZerocoinStake(pindexPrev->nHeight, stake.get()))
-            return state.DoS(100, error("%s: staked zbtcafails context checks", __func__));
+        if (stake->IsZbtci() && !ContextualCheckZerocoinStake(pindexPrev->nHeight, stake.get()))
+            return state.DoS(100, error("%s: staked zbtcifails context checks", __func__));
 
         uint256 hash = block.GetHash();
         if(!mapProofOfStake.count(hash)) // add to mapProofOfStake
@@ -4294,7 +4294,7 @@ bool ProcessNewBlock(CValidationState& state, CNode* pfrom, CBlock* pblock, CDis
         }
     }
     if (nMints || nSpends)
-        LogPrintf("%s : block contains %d zbtcamints and %d zbtcaspends\n", __func__, nMints, nSpends);
+        LogPrintf("%s : block contains %d zbtcimints and %d zbtcispends\n", __func__, nMints, nSpends);
 
     if (!CheckBlockSignature(*pblock))
         return error("ProcessNewBlock() : bad proof-of-stake block signature");
@@ -5330,7 +5330,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
             return false;
         }
 
-        // btca: We use certain sporks during IBD, so check to see if they are
+        // btci: We use certain sporks during IBD, so check to see if they are
         // available. If not, ask the first peer connected for them.
         bool fMissingSporks = !pSporkDB->SporkExists(SPORK_14_NEW_PROTOCOL_ENFORCEMENT) &&
                 !pSporkDB->SporkExists(SPORK_15_NEW_PROTOCOL_ENFORCEMENT_2) &&

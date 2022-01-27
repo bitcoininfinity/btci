@@ -6,13 +6,13 @@ and tests weren't explicitly disabled.
 
 After configuring, they can be run with 'make check'.
 
-To run the btcad tests manually, launch src/test/test_btca .
+To run the btcid tests manually, launch src/test/test_btci .
 
-To add more btcad tests, add `BOOST_AUTO_TEST_CASE` functions to the existing
+To add more btcid tests, add `BOOST_AUTO_TEST_CASE` functions to the existing
 .cpp files in the test/ directory or add new .cpp files that
 implement new BOOST_AUTO_TEST_SUITE sections.
 
-To run the btca-qt tests manually, launch src/qt/test/btca-qt_test
+To run the btci-qt tests manually, launch src/qt/test/btci-qt_test
 
-To add more btca-qt tests, add them to the `src/qt/test/` directory and
+To add more btci-qt tests, add them to the `src/qt/test/` directory and
 the `src/qt/test/test_main.cpp` file.

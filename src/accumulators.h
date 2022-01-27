@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef btca_ACCUMULATORS_H
-#define btca_ACCUMULATORS_H
+#ifndef btci_ACCUMULATORS_H
+#define btci_ACCUMULATORS_H
 
 #include "libzerocoin/Accumulator.h"
 #include "libzerocoin/Coin.h"
@@ -29,4 +29,4 @@ uint32_t GetChecksum(const CBigNum &bnValue);
 int GetChecksumHeight(uint32_t nChecksum, libzerocoin::CoinDenomination denomination);
 bool ValidateAccumulatorCheckpoint(const CBlock& block, CBlockIndex* pindex, AccumulatorMap& mapAccumulators);
 
-#endif //btca_ACCUMULATORS_H
+#endif //btci_ACCUMULATORS_H

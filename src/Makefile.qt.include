@@ -2,43 +2,43 @@
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-bin_PROGRAMS += qt/btca-qt
+bin_PROGRAMS += qt/btci-qt
 EXTRA_LIBRARIES += qt/libbitcoinqt.a
 
-# btca qt core #
+# btci qt core #
 QT_TS = \
-  qt/locale/btca_bg.ts \
-  qt/locale/btca_ca.ts \
-  qt/locale/btca_cs.ts \
-  qt/locale/btca_da.ts \
-  qt/locale/btca_de.ts \
-  qt/locale/btca_en.ts \
-  qt/locale/btca_en_US.ts \
-  qt/locale/btca_eo.ts \
-  qt/locale/btca_es.ts \
-  qt/locale/btca_es_ES.ts \
-  qt/locale/btca_fi.ts \
-  qt/locale/btca_fr_FR.ts \
-  qt/locale/btca_hi_IN.ts \
-  qt/locale/btca_hr.ts \
-  qt/locale/btca_hr_HR.ts \
-  qt/locale/btca_it.ts \
-  qt/locale/btca_ja.ts \
-  qt/locale/btca_ko_KR.ts \
-  qt/locale/btca_lt_LT.ts \
-  qt/locale/btca_nl.ts \
-  qt/locale/btca_pl.ts \
-  qt/locale/btca_pt.ts \
-  qt/locale/btca_pt_BR.ts \
-  qt/locale/btca_ro_RO.ts \
-  qt/locale/btca_ru.ts \
-  qt/locale/btca_sk.ts \
-  qt/locale/btca_sv.ts \
-  qt/locale/btca_tr.ts \
-  qt/locale/btca_uk.ts \
-  qt/locale/btca_vi.ts \
-  qt/locale/btca_zh_CN.ts \
-  qt/locale/btca_zh_TW.ts
+  qt/locale/btci_bg.ts \
+  qt/locale/btci_ca.ts \
+  qt/locale/btci_cs.ts \
+  qt/locale/btci_da.ts \
+  qt/locale/btci_de.ts \
+  qt/locale/btci_en.ts \
+  qt/locale/btci_en_US.ts \
+  qt/locale/btci_eo.ts \
+  qt/locale/btci_es.ts \
+  qt/locale/btci_es_ES.ts \
+  qt/locale/btci_fi.ts \
+  qt/locale/btci_fr_FR.ts \
+  qt/locale/btci_hi_IN.ts \
+  qt/locale/btci_hr.ts \
+  qt/locale/btci_hr_HR.ts \
+  qt/locale/btci_it.ts \
+  qt/locale/btci_ja.ts \
+  qt/locale/btci_ko_KR.ts \
+  qt/locale/btci_lt_LT.ts \
+  qt/locale/btci_nl.ts \
+  qt/locale/btci_pl.ts \
+  qt/locale/btci_pt.ts \
+  qt/locale/btci_pt_BR.ts \
+  qt/locale/btci_ro_RO.ts \
+  qt/locale/btci_ru.ts \
+  qt/locale/btci_sk.ts \
+  qt/locale/btci_sv.ts \
+  qt/locale/btci_tr.ts \
+  qt/locale/btci_uk.ts \
+  qt/locale/btci_vi.ts \
+  qt/locale/btci_zh_CN.ts \
+  qt/locale/btci_zh_TW.ts
 
 QT_FORMS_UI = \
   qt/forms/addressbookpage.ui \
@@ -63,7 +63,7 @@ QT_FORMS_UI = \
   qt/forms/sendcoinsentry.ui \
   qt/forms/signverifymessagedialog.ui \
   qt/forms/transactiondescdialog.ui \
-  qt/forms/zbtcacontroldialog.ui
+  qt/forms/zbtcicontroldialog.ui
 
 QT_MOC_CPP = \
   qt/moc_addressbookpage.cpp \
@@ -116,23 +116,23 @@ QT_MOC_CPP = \
   qt/moc_walletframe.cpp \
   qt/moc_walletmodel.cpp \
   qt/moc_walletview.cpp \
-  qt/moc_zbtcacontroldialog.cpp
+  qt/moc_zbtcicontroldialog.cpp
 
 BITCOIN_MM = \
   qt/macdockiconhandler.mm \
   qt/macnotificationhandler.mm
 
 QT_MOC = \
-  qt/btca.moc \
+  qt/btci.moc \
   qt/bitcoinamountfield.moc \
   qt/intro.moc \
   qt/overviewpage.moc \
   qt/rpcconsole.moc
 
-QT_QRC_CPP = qt/qrc_btca.cpp
-QT_QRC = qt/btca.qrc
-QT_QRC_LOCALE_CPP = qt/qrc_btca_locale.cpp
-QT_QRC_LOCALE = qt/btca_locale.qrc
+QT_QRC_CPP = qt/qrc_btci.cpp
+QT_QRC = qt/btci.qrc
+QT_QRC_LOCALE_CPP = qt/qrc_btci_locale.cpp
+QT_QRC_LOCALE = qt/btci_locale.qrc
 
 PROTOBUF_CC = qt/paymentrequest.pb.cc
 PROTOBUF_H = qt/paymentrequest.pb.h
@@ -196,7 +196,7 @@ BITCOIN_QT_H = \
   qt/walletmodeltransaction.h \
   qt/walletview.h \
   qt/winshutdownmonitor.h \
-  qt/zbtcacontroldialog.h
+  qt/zbtcicontroldialog.h
 
 RES_ICONS = \
   qt/res/icons/add.png \
@@ -254,12 +254,12 @@ RES_ICONS = \
   qt/res/icons/tx_input.png \
   qt/res/icons/tx_output.png \
   qt/res/icons/tx_mined.png \
-  qt/res/icons/unit_btca.png \
-  qt/res/icons/unit_mbtca.png \
-  qt/res/icons/unit_ubtca.png \
-  qt/res/icons/unit_tbtca.png \
-  qt/res/icons/unit_tmbtca.png \
-  qt/res/icons/unit_tubtca.png
+  qt/res/icons/unit_btci.png \
+  qt/res/icons/unit_mbtci.png \
+  qt/res/icons/unit_ubtci.png \
+  qt/res/icons/unit_tbtci.png \
+  qt/res/icons/unit_tmbtci.png \
+  qt/res/icons/unit_tubtci.png
 
 BITCOIN_QT_CPP = \
   qt/bantablemodel.cpp \
@@ -324,7 +324,7 @@ BITCOIN_QT_CPP += \
   qt/walletmodel.cpp \
   qt/walletmodeltransaction.cpp \
   qt/walletview.cpp \
-  qt/zbtcacontroldialog.cpp
+  qt/zbtcicontroldialog.cpp
 
 endif
 
@@ -332,7 +332,7 @@ RES_IMAGES = \
   qt/res/images/about.png \
   qt/res/images/splash.png \
   qt/res/images/splash_testnet.png \
-  qt/res/images/btca_logo_horizontal.png \
+  qt/res/images/btci_logo_horizontal.png \
   qt/res/images/downArrow_dark.png \
   qt/res/images/downArrow_small_dark.png \
   qt/res/images/downArrow_small.png \
@@ -350,7 +350,7 @@ RES_CSS = \
 
 RES_MOVIES = $(wildcard $(srcdir)/qt/res/movies/spinner-*.png)
 
-BITCOIN_RC = qt/res/btca-qt-res.rc
+BITCOIN_RC = qt/res/btci-qt-res.rc
 
 BITCOIN_QT_INCLUDES = -I$(builddir)/qt -I$(srcdir)/qt -I$(srcdir)/qt/forms \
   -I$(builddir)/qt/forms
@@ -372,72 +372,72 @@ QT_FORMS_H=$(join $(dir $(QT_FORMS_UI)),$(addprefix ui_, $(notdir $(QT_FORMS_UI:
 # Most files will depend on the forms and moc files as includes. Generate them
 # before anything else.
 $(QT_MOC): $(QT_FORMS_H)
-$(qt_libbitcoinqt_a_OBJECTS) $(qt_btca_qt_OBJECTS) : | $(QT_MOC)
+$(qt_libbitcoinqt_a_OBJECTS) $(qt_btci_qt_OBJECTS) : | $(QT_MOC)
 
 #Generating these with a half-written protobuf header leads to wacky results.
 #This makes sure it's done.
 $(QT_MOC): $(PROTOBUF_H)
 $(QT_MOC_CPP): $(PROTOBUF_H)
 
-# btca-qt binary #
-qt_btca_qt_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BITCOIN_QT_INCLUDES) \
+# btci-qt binary #
+qt_btci_qt_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BITCOIN_QT_INCLUDES) \
   $(QT_INCLUDES) $(PROTOBUF_CFLAGS) $(QR_CFLAGS)
-qt_btca_qt_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
+qt_btci_qt_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
 qt_bitcoin_qt_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
 
-qt_btca_qt_SOURCES = qt/btca.cpp
+qt_btci_qt_SOURCES = qt/btci.cpp
 if TARGET_DARWIN
-  qt_btca_qt_SOURCES += $(BITCOIN_MM)
+  qt_btci_qt_SOURCES += $(BITCOIN_MM)
 endif
 if TARGET_WINDOWS
-  qt_btca_qt_SOURCES += $(BITCOIN_RC)
+  qt_btci_qt_SOURCES += $(BITCOIN_RC)
 endif
-qt_btca_qt_LDADD = qt/libbitcoinqt.a $(LIBBITCOIN_SERVER)
+qt_btci_qt_LDADD = qt/libbitcoinqt.a $(LIBBITCOIN_SERVER)
 if ENABLE_WALLET
-qt_btca_qt_LDADD += $(LIBBITCOIN_WALLET)
+qt_btci_qt_LDADD += $(LIBBITCOIN_WALLET)
 endif
 if ENABLE_ZMQ
-qt_btca_qt_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
+qt_btci_qt_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
 endif
-qt_btca_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBBITCOIN_ZEROCOIN) $(LIBLEVELDB) $(LIBMEMENV) \
+qt_btci_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBBITCOIN_ZEROCOIN) $(LIBLEVELDB) $(LIBMEMENV) \
   $(BOOST_LIBS) $(QT_LIBS) $(QT_DBUS_LIBS) $(QR_LIBS) $(PROTOBUF_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(LIBSECP256K1) \
   $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
-qt_btca_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
-qt_btca_qt_LIBTOOLFLAGS = --tag CXX
+qt_btci_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+qt_btci_qt_LIBTOOLFLAGS = --tag CXX
 
 #locale/foo.ts -> locale/foo.qm
 QT_QM=$(QT_TS:.ts=.qm)
 
 SECONDARY: $(QT_QM)
 
-$(srcdir)/qt/btcastrings.cpp: $(libbitcoin_server_a_SOURCES) $(libbitcoin_wallet_a_SOURCES) $(libbitcoin_common_a_SOURCES) $(libbitcoin_zmq_a_SOURCES) $(libbitcoin_util_a_SOURCES)
+$(srcdir)/qt/btcistrings.cpp: $(libbitcoin_server_a_SOURCES) $(libbitcoin_wallet_a_SOURCES) $(libbitcoin_common_a_SOURCES) $(libbitcoin_zmq_a_SOURCES) $(libbitcoin_util_a_SOURCES)
 	@test -n $(XGETTEXT) || echo "xgettext is required for updating translations"
 	$(AM_V_GEN) cd $(srcdir); XGETTEXT=$(XGETTEXT) PACKAGE_NAME="$(PACKAGE_NAME)" $(PYTHON) ../share/qt/extract_strings_qt.py $^
 
-translate: $(srcdir)/qt/btcastrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(BITCOIN_QT_CPP) $(BITCOIN_QT_H) $(BITCOIN_MM)
+translate: $(srcdir)/qt/btcistrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(BITCOIN_QT_CPP) $(BITCOIN_QT_H) $(BITCOIN_MM)
 	@test -n $(LUPDATE) || echo "lupdate is required for updating translations"
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts $(srcdir)/qt/locale/btca_en.ts
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts $(srcdir)/qt/locale/btci_en.ts
 
 $(QT_QRC_LOCALE_CPP): $(QT_QRC_LOCALE) $(QT_QM)
 	@test -f $(RCC)
 	@cp -f $< $(@D)/temp_$(<F)
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name btca_locale $(@D)/temp_$(<F) | \
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name btci_locale $(@D)/temp_$(<F) | \
 	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
 	@rm $(@D)/temp_$(<F)
 
 $(QT_QRC_CPP): $(QT_QRC) $(QT_FORMS_H) $(RES_ICONS) $(RES_IMAGES) $(RES_CSS) $(RES_MOVIES) $(PROTOBUF_H)
 	@test -f $(RCC)
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name btca $< | \
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name btci $< | \
 	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
 
-CLEAN_QT = $(nodist_qt_libbitcoinqt_a_SOURCES) $(QT_QM) $(QT_FORMS_H) qt/*.gcda qt/*.gcno qt/temp_btca_locale.qrc
+CLEAN_QT = $(nodist_qt_libbitcoinqt_a_SOURCES) $(QT_QM) $(QT_FORMS_H) qt/*.gcda qt/*.gcno qt/temp_btci_locale.qrc
 
 CLEANFILES += $(CLEAN_QT)
 
-btca_qt_clean: FORCE
-	rm -f $(CLEAN_QT) $(qt_libbitcoinqt_a_OBJECTS) $(qt_btca_qt_OBJECTS) qt/btca-qt$(EXEEXT) $(LIBBITCOINQT)
+btci_qt_clean: FORCE
+	rm -f $(CLEAN_QT) $(qt_libbitcoinqt_a_OBJECTS) $(qt_btci_qt_OBJECTS) qt/btci-qt$(EXEEXT) $(LIBBITCOINQT)
 
-btca_qt : qt/btca-qt$(EXEEXT)
+btci_qt : qt/btci-qt$(EXEEXT)
 
 ui_%.h: %.ui
 	@test -f $(UIC)

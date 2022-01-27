@@ -9,7 +9,7 @@
 #include "stakeinput.h"
 #include "wallet.h"
 
-CZbtcaStake::CZbtcaStake(const libzerocoin::CoinSpend& spend)
+CZbtciStake::CZbtciStake(const libzerocoin::CoinSpend& spend)
 {
     this->nChecksum = spend.getAccumulatorChecksum();
     this->denom = spend.getDenomination();
@@ -19,7 +19,7 @@ CZbtcaStake::CZbtcaStake(const libzerocoin::CoinSpend& spend)
     fMint = false;
 }
 
-int CZbtcaStake::GetChecksumHeightFromMint()
+int CZbtciStake::GetChecksumHeightFromMint()
 {
     int nHeightChecksum = chainActive.Height() - Params().Zerocoin_RequiredStakeDepth();
 
@@ -30,20 +30,20 @@ int CZbtcaStake::GetChecksumHeightFromMint()
     return GetChecksumHeight(nChecksum, denom);
 }
 
-int CZbtcaStake::GetChecksumHeightFromSpend()
+int CZbtciStake::GetChecksumHeightFromSpend()
 {
     return GetChecksumHeight(nChecksum, denom);
 }
 
-uint32_t CZbtcaStake::GetChecksum()
+uint32_t CZbtciStake::GetChecksum()
 {
     return nChecksum;
 }
 
-// The zbtcablock index is the first appearance of the accumulator checksum that was used in the spend
+// The zbtciblock index is the first appearance of the accumulator checksum that was used in the spend
 // note that this also means when staking that this checksum should be from a block that is beyond 60 minutes old and
 // 100 blocks deep.
-CBlockIndex* CZbtcaStake::GetIndexFrom()
+CBlockIndex* CZbtciStake::GetIndexFrom()
 {
     if (pindexFrom)
         return pindexFrom;
@@ -65,13 +65,13 @@ CBlockIndex* CZbtcaStake::GetIndexFrom()
     return pindexFrom;
 }
 
-CAmount CZbtcaStake::GetValue()
+CAmount CZbtciStake::GetValue()
 {
     return denom * COIN;
 }
 
 //Use the first accumulator checkpoint that occurs 60 minutes after the block being staked from
-bool CZbtcaStake::GetModifier(uint64_t& nStakeModifier)
+bool CZbtciStake::GetModifier(uint64_t& nStakeModifier)
 {
     CBlockIndex* pindex = GetIndexFrom();
     if (!pindex)
@@ -91,15 +91,15 @@ bool CZbtcaStake::GetModifier(uint64_t& nStakeModifier)
     }
 }
 
-CDataStream CZbtcaStake::GetUniqueness()
+CDataStream CZbtciStake::GetUniqueness()
 {
-    //The unique identifier for a zbtcais a hash of the serial
+    //The unique identifier for a zbtciis a hash of the serial
     CDataStream ss(SER_GETHASH, 0);
     ss << hashSerial;
     return ss;
 }
 
-bool CZbtcaStake::CreateTxIn(CWallet* pwallet, CTxIn& txIn, uint256 hashTxOut)
+bool CZbtciStake::CreateTxIn(CWallet* pwallet, CTxIn& txIn, uint256 hashTxOut)
 {
     CBlockIndex* pindexCheckpoint = GetIndexFrom();
     if (!pindexCheckpoint)
@@ -120,25 +120,25 @@ bool CZbtcaStake::CreateTxIn(CWallet* pwallet, CTxIn& txIn, uint256 hashTxOut)
     return true;
 }
 
-bool CZbtcaStake::CreateTxOuts(CWallet* pwallet, vector<CTxOut>& vout, CAmount nTotal)
+bool CZbtciStake::CreateTxOuts(CWallet* pwallet, vector<CTxOut>& vout, CAmount nTotal)
 {
-    //Create an output returning the zbtcathat was staked
+    //Create an output returning the zbtcithat was staked
     CTxOut outReward;
     libzerocoin::CoinDenomination denomStaked = libzerocoin::AmountToZerocoinDenomination(this->GetValue());
     CDeterministicMint dMint;
-    if (!pwallet->CreateZbtcaOutPut(denomStaked, outReward, dMint))
-        return error("%s: failed to create zbtcaoutput", __func__);
+    if (!pwallet->CreateZbtciOutPut(denomStaked, outReward, dMint))
+        return error("%s: failed to create zbtcioutput", __func__);
     vout.emplace_back(outReward);
 
     //Add new staked denom to our wallet
     if (!pwallet->DatabaseMint(dMint))
-        return error("%s: failed to database the staked zbtca", __func__);
+        return error("%s: failed to database the staked zbtci", __func__);
 
     for (unsigned int i = 0; i < 3; i++) {
         CTxOut out;
         CDeterministicMint dMintReward;
-        if (!pwallet->CreateZbtcaOutPut(libzerocoin::CoinDenomination::ZQ_ONE, out, dMintReward))
-            return error("%s: failed to create zbtcaoutput", __func__);
+        if (!pwallet->CreateZbtciOutPut(libzerocoin::CoinDenomination::ZQ_ONE, out, dMintReward))
+            return error("%s: failed to create zbtcioutput", __func__);
         vout.emplace_back(out);
 
         if (!pwallet->DatabaseMint(dMintReward))
@@ -148,48 +148,48 @@ bool CZbtcaStake::CreateTxOuts(CWallet* pwallet, vector<CTxOut>& vout, CAmount n
     return true;
 }
 
-bool CZbtcaStake::GetTxFrom(CTransaction& tx)
+bool CZbtciStake::GetTxFrom(CTransaction& tx)
 {
     return false;
 }
 
-bool CZbtcaStake::MarkSpent(CWallet *pwallet, const uint256& txid)
+bool CZbtciStake::MarkSpent(CWallet *pwallet, const uint256& txid)
 {
-    CzbtcaTracker* zbtcaTracker = pwallet->zbtcaTracker.get();
+    CzbtciTracker* zbtciTracker = pwallet->zbtciTracker.get();
     CMintMeta meta;
-    if (!zbtcaTracker->GetMetaFromStakeHash(hashSerial, meta))
+    if (!zbtciTracker->GetMetaFromStakeHash(hashSerial, meta))
         return error("%s: tracker does not have serialhash", __func__);
 
-    zbtcaTracker->SetPubcoinUsed(meta.hashPubcoin, txid);
+    zbtciTracker->SetPubcoinUsed(meta.hashPubcoin, txid);
     return true;
 }
 
-//!btcaStake
-bool CbtcaStake::SetInput(CTransaction txPrev, unsigned int n)
+//!btciStake
+bool CbtciStake::SetInput(CTransaction txPrev, unsigned int n)
 {
     this->txFrom = txPrev;
     this->nPosition = n;
     return true;
 }
 
-bool CbtcaStake::GetTxFrom(CTransaction& tx)
+bool CbtciStake::GetTxFrom(CTransaction& tx)
 {
     tx = txFrom;
     return true;
 }
 
-bool CbtcaStake::CreateTxIn(CWallet* pwallet, CTxIn& txIn, uint256 hashTxOut)
+bool CbtciStake::CreateTxIn(CWallet* pwallet, CTxIn& txIn, uint256 hashTxOut)
 {
     txIn = CTxIn(txFrom.GetHash(), nPosition);
     return true;
 }
 
-CAmount CbtcaStake::GetValue()
+CAmount CbtciStake::GetValue()
 {
     return txFrom.vout[nPosition].nValue;
 }
 
-bool CbtcaStake::CreateTxOuts(CWallet* pwallet, vector<CTxOut>& vout, CAmount nTotal)
+bool CbtciStake::CreateTxOuts(CWallet* pwallet, vector<CTxOut>& vout, CAmount nTotal)
 {
     vector<valtype> vSolutions;
     txnouttype whichType;
@@ -224,7 +224,7 @@ bool CbtcaStake::CreateTxOuts(CWallet* pwallet, vector<CTxOut>& vout, CAmount nT
     return true;
 }
 
-bool CbtcaStake::GetModifier(uint64_t& nStakeModifier)
+bool CbtciStake::GetModifier(uint64_t& nStakeModifier)
 {
     int nStakeModifierHeight = 0;
     int64_t nStakeModifierTime = 0;
@@ -238,16 +238,16 @@ bool CbtcaStake::GetModifier(uint64_t& nStakeModifier)
     return true;
 }
 
-CDataStream CbtcaStake::GetUniqueness()
+CDataStream CbtciStake::GetUniqueness()
 {
-    //The unique identifier for a btcastake is the outpoint
+    //The unique identifier for a btcistake is the outpoint
     CDataStream ss(SER_NETWORK, 0);
     ss << nPosition << txFrom.GetHash();
     return ss;
 }
 
 //The block that the UTXO was added to the chain
-CBlockIndex* CbtcaStake::GetIndexFrom()
+CBlockIndex* CbtciStake::GetIndexFrom()
 {
     uint256 hashBlock = 0;
     CTransaction tx;
